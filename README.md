@@ -41,6 +41,17 @@ Code snippets and cheat sheet for UNIX and C.
   - [`svn`](#svn)
   - [`ln`](#ln)
     - [Options](#options-7)
+  - [Deleting files/directories](#deleting-filesdirectories)
+    - [`rm`](#rm)
+      - [Options](#options-8)
+    - [`rmdir`](#rmdir)
+  - [File Transportation](#file-transportation)
+    - [`cp`](#cp)
+      - [Options](#options-9)
+    - [`mv`](#mv)
+  - [`less` and `more`](#less-and-more)
+  - [`less`](#less)
+  - [`more`](#more)
 
 # C Language
 
@@ -162,7 +173,7 @@ ps -e|cut -d ' ' -f 1 |uniq |sort| wc -l
 
 ### Options
 
-- `v`
+- `-v`
   - Exclude 
 
 ## `ls`
@@ -253,11 +264,58 @@ Why even learn svn?
 
 ## `ln`
 
-Make links. To create a symbolic link
+Make links. Can create a symbolic link.
 
 ### Options
 
-- `-s`
+- `-s /path/to/file /path/to/symlink`
   - Creates a symbolic link.
 
+## Deleting files/directories
 
+### `rm`
+
+Delete a file.
+
+#### Options
+
+- `-r`
+  - Deletes files recursively in a directory.
+- `-f`
+  - Deletes without confirmation.
+
+### `rmdir`
+
+`rm` but for directories. Deletes directory provided it is empty.
+
+## File Transportation
+
+### `cp`
+
+Copy file. `cp /Desktop/1/a /Desktop/2/a`
+
+#### Options
+
+- `-R`
+  - Copies the entire directory. 
+
+### `mv`
+
+Move file. `mv hello.c Desktop/hello.c`
+Tip: Useful for renaming as well. `mv hello.c bye.c`
+
+## `less` and `more`
+
+Pager commands. Can show long files to screen.
+
+> “`less` is more, but more `more` than `more` is, so `more` is less `less`, so use more `less` if you want less `more`.” —Slackware Linux Essentials
+
+## `less`
+
+> "Opposite of more" - man less
+
+## `more`
+
+> "Opposite of less" - man more
+
+Use `less` instead of more. 
