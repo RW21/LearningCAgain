@@ -50,8 +50,8 @@ Code snippets and cheat sheet for UNIX and C.
       - [Options](#options-9)
     - [`mv`](#mv)
   - [`less` and `more`](#less-and-more)
-  - [`less`](#less)
-  - [`more`](#more)
+    - [`less`](#less)
+    - [`more`](#more)
 
 # C Language
 
@@ -310,11 +310,11 @@ Pager commands. Can show long files to screen.
 
 > “`less` is more, but more `more` than `more` is, so `more` is less `less`, so use more `less` if you want less `more`.” —Slackware Linux Essentials
 
-## `less`
+### `less`
 
 > "Opposite of more" - man less
 
-## `more`
+### `more`
 
 > "Opposite of less" - man more
 
