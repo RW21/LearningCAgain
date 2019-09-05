@@ -1,17 +1,22 @@
 # Learning C Language and the UNIX System
 
-Code snippets and cheat sheet for UNIX and C.
+Code snippets and cheat sheet for UNIX and C55.
 
 - [Learning C Language and the UNIX System](#learning-c-language-and-the-unix-system)
 - [C Language](#c-language)
   - [Bitwise Operators](#bitwise-operators)
     - [Example](#example)
+  - [Numerical Operators](#numerical-operators)
+    - [Division](#division)
   - [Flush a Stream](#flush-a-stream)
     - [`fflush`](#fflush)
   - [Typedef Deceleration](#typedef-deceleration)
     - [Examples](#examples)
   - [`switch` Statement](#switch-statement)
   - [`scanf`](#scanf)
+  - [Freeing Memory](#freeing-memory)
+  - [Processes](#processes)
+    - [Signals](#signals)
 - [UNIX Operations](#unix-operations)
   - [`gcc`](#gcc)
     - [Options](#options)
@@ -68,6 +73,12 @@ int a=5, b=11, c;
 c=a^b; // c = 14 
 ```
 
+## Numerical Operators
+
+### Division
+
+Integer division will always truncate towards zero.
+
 ## Flush a Stream
 
 ```C
@@ -95,6 +106,23 @@ Needs to break explicitly.
 ## `scanf`
 
 `scanf` family scans input according to a format.
+
+## Freeing Memory
+
+We should free memory which is reserved dynamically.
+
+## Processes
+
+`fork()` forks a process. Returns 0 if direct child and child's process id otherwise.
+
+### Signals
+
+- `WIFEXITED`
+  - Returns a nonzero value if the child process terminated normally with exit.
+- `WEXITSTATUS`
+  - If WIFEXITED is true of status, this macro returns the low-order 8 bits of the exit status value from the child process. [gnu.org](https://www.gnu.org/software/libc/manual/html_node/Process-Completion-Status.html)
+
+
 
 # UNIX Operations
 
