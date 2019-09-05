@@ -4,20 +4,36 @@ Code snippets and cheat sheet for UNIX and C55.
 
 - [Learning C Language and the UNIX System](#learning-c-language-and-the-unix-system)
 - [C Language](#c-language)
+  - [Types](#types)
   - [Bitwise Operators](#bitwise-operators)
     - [Example](#example)
   - [Numerical Operators](#numerical-operators)
     - [Division](#division)
+  - [Pointers](#pointers)
+    - [Pointer Related Functions](#pointer-related-functions)
+    - [Examples](#examples)
+  - [Structs](#structs)
+  - [Macros](#macros)
+    - [Example](#example-1)
+  - [Conditional Compiling](#conditional-compiling)
+  - [`enums`](#enums)
+  - [`unions`](#unions)
   - [Flush a Stream](#flush-a-stream)
     - [`fflush`](#fflush)
+  - [Receiving Input from stdin](#receiving-input-from-stdin)
+    - [Input ffunctions](#input-ffunctions)
   - [Typedef Deceleration](#typedef-deceleration)
-    - [Examples](#examples)
+    - [Example](#example-2)
+  - [Reading from Files/Streams](#reading-from-filesstreams)
   - [`switch` Statement](#switch-statement)
   - [`scanf`](#scanf)
   - [Freeing Memory](#freeing-memory)
   - [Processes](#processes)
-    - [Signals](#signals)
+    - [Macros](#macros-1)
+    - [Zombies](#zombies)
 - [UNIX Operations](#unix-operations)
+  - [Redirection](#redirection)
+    - [Example](#example-3)
   - [`gcc`](#gcc)
     - [Options](#options)
   - [File Permissions](#file-permissions)
@@ -26,7 +42,7 @@ Code snippets and cheat sheet for UNIX and C55.
   - [`export`](#export)
   - [`cut`](#cut)
     - [Options](#options-1)
-    - [Example](#example-1)
+    - [Example](#example-4)
   - [`grep`](#grep)
     - [Options](#options-2)
   - [`ls`](#ls)
@@ -60,6 +76,15 @@ Code snippets and cheat sheet for UNIX and C55.
 
 # C Language
 
+## Types
+
+- Signed integer types
+  - char ≤ short int ≤ int ≤ long int ≤ long long int
+- Unsigned integer types
+  -  unsigned char ≤ unsigned short int ≤ unsigned int ≤ unsigned long int ≤ unsigned long long int
+-  floating point types
+   -  float ≤ double ≤ long double
+
 ## Bitwise Operators
 
 - `&` Binary and
@@ -79,6 +104,89 @@ c=a^b; // c = 14
 
 Integer division will always truncate towards zero.
 
+## Pointers
+
+### Pointer Related Functions
+
+- `memset()`
+  - Set a chunk of bytes to a value.
+- `memcpy()`
+  - Copy bytes from a pointer to a pointer.
+
+Use [cdecl](https://cdecl.org) for easy conversion.
+
+### Examples
+
+- `int* F(char*, int**);`
+  - Declare F as function (pointer to char, pointer to pointer to int) returning pointer to int.
+- `void (*g)();`
+  - `g` is a pointer to a function that takes in an unspecified number of parameters and returns nothing.
+
+## Structs
+
+```C
+struct Data { 
+int length ;
+char* str ;
+};
+
+struct Data d1;
+struct Data* d2=malloc(sizeof(struct Data));
+
+// linked list
+struct Node { 
+int value ;
+struct Node* next ;
+};
+
+(*(*(*(*n).next).next).next).value = 4;
+// or
+n−>next−>next−>next = 4
+```
+
+## Macros
+
+Looks like a function call but is processed by the preprocessor (macro processor that is used by the compiler to transform code before compiling).
+
+### Example
+
+```C
+#define CUBE(X) ((X)*(X)*(X))
+```
+
+## Conditional Compiling
+
+```C
+#ifdef OMP SUPPORT
+// stuff that only works under OMP
+#endif
+
+#ifndef A
+#define A // A things
+#endif
+```
+
+## `enums`
+
+```C
+enum Day{
+    SUNDAY,
+    MONDAY,...
+};
+
+enum Day d = TUESDAY;
+```
+
+## `unions`
+
+```C
+union Staff{
+    struct TechStaff staff;
+    struct PaymentInfo info;
+};
+```
+
+
 ## Flush a Stream
 
 ```C
@@ -90,14 +198,32 @@ fpurge(FILE *stream);
 
 Flushes buffer for the stream. With no input, it will flush all buffers.
 
+## Receiving Input from stdin
+
+### Input ffunctions
+
+- `fgetc()`
+- `fgets()`
+- `fread()`
+
 ## Typedef Deceleration
 
-Use [cdecl](https://cdecl.org) for easy conversion.
+`typedef actualtype newname ;`
 
-### Examples
+Typedef on structs are possible.
 
-- `int* F(char*, int**);`
-  - declare F as function (pointer to char, pointer to pointer to int) returning pointer to int
+### Example
+
+```C
+typedef char* cptr;
+
+cptr x, y, z;
+```
+
+## Reading from Files/Streams
+
+Use `fopen()` to get a `FILE*`. Remember to `fclose()`. `fopen()` will return a null pointer if it fails to open a file.
+
 
 ## `switch` Statement
 
@@ -113,18 +239,31 @@ We should free memory which is reserved dynamically.
 
 ## Processes
 
-`fork()` forks a process. Returns 0 if direct child and child's process id otherwise.
+`fork()` forks a process. Returns 0 if direct child and child's process id otherwise. `exit()` is a system call which ends the current process. You cannot use it to end different processes. 
 
-### Signals
+### Macros
 
 - `WIFEXITED`
   - Returns a nonzero value if the child process terminated normally with exit.
 - `WEXITSTATUS`
   - If WIFEXITED is true of status, this macro returns the low-order 8 bits of the exit status value from the child process. [gnu.org](https://www.gnu.org/software/libc/manual/html_node/Process-Completion-Status.html)
 
+### Zombies
 
+The memory and resources of the process have been released but part of the process still remains. A process in this state is called a zombie.
 
 # UNIX Operations
+
+## Redirection
+
+To redirect stdin use `>`.
+
+### Example
+
+```bash
+ls /etc > listoffiles
+cat listoffiles
+```
 
 ## `gcc`
 
