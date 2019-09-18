@@ -1,6 +1,6 @@
 # Learning C Language and the UNIX System
 
-Code snippets and cheat sheet for UNIX and C55.
+Code snippets and cheat sheet for UNIX and C99.
 
 - [Learning C Language and the UNIX System](#learning-c-language-and-the-unix-system)
 - [C Language](#c-language)
