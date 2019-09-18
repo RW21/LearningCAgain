@@ -31,6 +31,7 @@ Code snippets and cheat sheet for UNIX and C55.
   - [Processes](#processes)
     - [Macros](#macros-1)
     - [Zombies](#zombies)
+  - [Files](#files)
 - [UNIX Operations](#unix-operations)
   - [Redirection](#redirection)
     - [Example](#example-3)
@@ -251,6 +252,14 @@ We should free memory which is reserved dynamically.
 ### Zombies
 
 The memory and resources of the process have been released but part of the process still remains. A process in this state is called a zombie.
+
+## Files
+
+Point a file to a file pointer.
+
+```C
+FILE *p = fopen("filename", "anymode");
+```
 
 # UNIX Operations
 
