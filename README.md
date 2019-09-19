@@ -7,6 +7,7 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Types](#types)
   - [Bitwise Operators](#bitwise-operators)
     - [Example](#example)
+  - [Arrays](#arrays)
   - [Numerical Operators](#numerical-operators)
     - [Division](#division)
   - [Pointers](#pointers)
@@ -15,7 +16,7 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Structs](#structs)
   - [Macros](#macros)
     - [Example](#example-1)
-  - [Conditional Compiling](#conditional-compiling)
+  - [Conditional Compiling (Header Guards)](#conditional-compiling-header-guards)
   - [`enums`](#enums)
   - [`unions`](#unions)
   - [Flush a Stream](#flush-a-stream)
@@ -31,6 +32,8 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Processes](#processes)
     - [Macros](#macros-1)
     - [Zombies](#zombies)
+  - [Makefiles](#makefiles)
+    - [Linker modularity](#linker-modularity)
 - [UNIX Operations](#unix-operations)
   - [Redirection](#redirection)
     - [Example](#example-3)
@@ -98,6 +101,13 @@ int a=5, b=11, c;
 c=a^b; // c = 14 
 ```
 
+## Arrays
+
+```C
+int a[100];
+int b[] = {10, 20, 40}; 
+```
+
 ## Numerical Operators
 
 ### Division
@@ -154,7 +164,7 @@ Looks like a function call but is processed by the preprocessor (macro processor
 #define CUBE(X) ((X)*(X)*(X))
 ```
 
-## Conditional Compiling
+## Conditional Compiling (Header Guards)
 
 ```C
 #ifdef OMP SUPPORT
@@ -251,6 +261,12 @@ We should free memory which is reserved dynamically.
 ### Zombies
 
 The memory and resources of the process have been released but part of the process still remains. A process in this state is called a zombie.
+
+## Makefiles
+
+Can be used to compile multiple source files. 
+
+### Linker modularity
 
 # UNIX Operations
 
