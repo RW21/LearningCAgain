@@ -77,6 +77,8 @@ Code snippets and cheat sheet for UNIX and C99.
   - [`less` and `more`](#less-and-more)
     - [`less`](#less)
     - [`more`](#more)
+  - [`kill`](#kill)
+    - [Example](#example-5)
 
 # C Language
 
@@ -521,3 +523,12 @@ Pager commands. Can show long files to screen.
 > "Opposite of less" - man more
 
 Use `less` instead of more. 
+
+## `kill`
+
+Send a signal to a process.
+
+### Example
+
+- `kill -s SIGHUP 3485`
+  - Send SIGHUP signal to process 3485.
