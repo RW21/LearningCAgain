@@ -32,11 +32,16 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Processes](#processes)
     - [Macros](#macros-1)
     - [Zombies](#zombies)
+<<<<<<< HEAD
   - [Makefiles](#makefiles)
     - [Linker modularity](#linker-modularity)
+=======
+  - [Files](#files)
+>>>>>>> d425610504dc1b6083c53e8c87cd5b50fe143876
 - [UNIX Operations](#unix-operations)
   - [Redirection](#redirection)
     - [Example](#example-3)
+  - [Regex](#regex)
   - [`gcc`](#gcc)
     - [Options](#options)
   - [File Permissions](#file-permissions)
@@ -48,6 +53,7 @@ Code snippets and cheat sheet for UNIX and C99.
     - [Example](#example-4)
   - [`grep`](#grep)
     - [Options](#options-2)
+    - [Examples](#examples-2)
   - [`ls`](#ls)
     - [Options](#options-3)
   - [`ps`](#ps)
@@ -60,6 +66,7 @@ Code snippets and cheat sheet for UNIX and C99.
     - [`cat`](#cat)
     - [`head`](#head)
     - [`tail`](#tail)
+    - [I Want a Specific Line](#i-want-a-specific-line)
   - [`wc`](#wc)
   - [`diff`](#diff)
   - [`svn`](#svn)
@@ -76,6 +83,8 @@ Code snippets and cheat sheet for UNIX and C99.
   - [`less` and `more`](#less-and-more)
     - [`less`](#less)
     - [`more`](#more)
+  - [`kill`](#kill)
+    - [Example](#example-5)
 
 # C Language
 
@@ -267,12 +276,21 @@ The memory and resources of the process have been released but part of the proce
 Can be used to compile multiple source files. 
 
 ### Linker modularity
+## Files
+
+Point a file to a file pointer.
+
+```C
+FILE *p = fopen("filename", "anymode");
+```
 
 # UNIX Operations
 
 ## Redirection
 
-To redirect stdin use `>`.
+To redirect stdin use `>`. 
+
+When using the character '>' inside a string in Bash, make sure to escape it. e.g. `grep "bracket \>" main.c`
 
 ### Example
 
@@ -280,6 +298,14 @@ To redirect stdin use `>`.
 ls /etc > listoffiles
 cat listoffiles
 ```
+
+## Regex
+
+Some basic regex.
+
+- `?`
+  - Matches zero or one occurrences of the regex.
+  - e.g. To get items which start from the start with the character s and end with d excluding the character sd, `s*?d`. 
 
 ## `gcc`
 
@@ -354,14 +380,21 @@ ps -e|cut -d ' ' -f 1 |uniq |sort| wc -l
 
 ## `grep` 
 
+"Global search form the regular expression".
+
 ### Options
 
 - `-v`
   - Exclude 
 
+### Examples
+
+- `cat main.c | grep main`
+  - To output all lines containing 'main' in the file main.c.
+
 ## `ls`
 
-Lists files.
+Lists files. Can do ls regex expression.
 
 ### Options
 
@@ -419,6 +452,10 @@ Display first x lines. `head -x hello.c;`
 
 Display last x lines. `tail -x hello.c;`
 
+### I Want a Specific Line
+
+Use `head` with `tail`. For example 17th line of file `test`: `head -17 test | tail -1`.
+
 ## `wc`
 
 Word count. `wc -l` for line count.
@@ -466,6 +503,8 @@ Delete a file.
   - Deletes files recursively in a directory.
 - `-f`
   - Deletes without confirmation.
+- `-d`
+  - Removes empty directories.
 
 ### `rmdir`
 
@@ -502,3 +541,12 @@ Pager commands. Can show long files to screen.
 > "Opposite of less" - man more
 
 Use `less` instead of more. 
+
+## `kill`
+
+Send a signal to a process.
+
+### Example
+
+- `kill -s SIGHUP 3485`
+  - Send SIGHUP signal to process 3485.
