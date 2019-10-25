@@ -12,6 +12,7 @@ Code snippets and cheat sheet for UNIX and C99.
     - [Division](#division)
   - [Pointers](#pointers)
     - [Pointer Related Functions](#pointer-related-functions)
+    - [Function Pointers](#function-pointers)
     - [Examples](#examples)
   - [Structs](#structs)
   - [Macros](#macros)
@@ -32,12 +33,96 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Processes](#processes)
     - [Macros](#macros-1)
     - [Zombies](#zombies)
+  - [Makefiles](#makefiles)
+    - [Linker modularity](#linker-modularity)
+  - [Files](#files)
+- [UNIX Operations](#unix-operations)
+  - [Redirection](#redirection)
+    - [Example](#example-3)
+  - [Regex](#regex)
+  - [`gcc`](#gcc)
+    - [Options](#options)
+  - [File Permissions](#file-permissions)
+    - [`chmod`](#chmod)
+      - [Examples](#examples-1)
+  - [`export`](#export)
+  - [`cut`](#cut)
+    - [Options](#options-1)
+    - [Example](#example-4)
+  - [`grep`](#grep)
+    - [Options](#options-2)
+    - [Examples](#examples-2)
+  - [`ls`](#ls)
+    - [Options](#options-3)
+  - [`ps`](#ps)
+    - [Options](#options-4)
+  - [`sort`](#sort)
+    - [Options](#options-5)
+  - [`uniq`](#uniq)
+    - [Options](#options-6)
+  - [Displaying Files in stdout](#displaying-files-in-stdout)
+    - [`cat`](#cat)
+    - [`head`](#head)
+    - [`tail`](#tail)
+    - [I Want a Specific Line](#i-want-a-specific-line)
+  - [`wc`](#wc)
+  - [`diff`](#diff)
+  - [`svn`](#svn)
+  - [`ln`](#ln)
+    - [Options](#options-7)
+  - [Deleting files/directories](#deleting-filesdirectories)
+    - [`rm`](#rm)
+      - [Options](#options-8)
+    - [`rmdir`](#rmdir)
+  - [File Transportation](#file-transportation)
+    - [`cp`](#cp)
+      - [Options](#options-9)
+    - [`mv`](#mv)
+  - [`less` and `more`](#less-and-more)
+    - [`less`](#less)
+    - [`more`](#more)
+  - [`kill`](#kill)
+    - [Example](#example-5)
 <<<<<<< HEAD
   - [Makefiles](#makefiles)
     - [Linker modularity](#linker-modularity)
 =======
   - [Files](#files)
 >>>>>>> d425610504dc1b6083c53e8c87cd5b50fe143876
+- [Learning C Language and the UNIX System](#learning-c-language-and-the-unix-system)
+- [C Language](#c-language)
+  - [Types](#types)
+  - [Bitwise Operators](#bitwise-operators)
+    - [Example](#example)
+  - [Arrays](#arrays)
+  - [Numerical Operators](#numerical-operators)
+    - [Division](#division)
+  - [Pointers](#pointers)
+    - [Pointer Related Functions](#pointer-related-functions)
+    - [Function Pointers](#function-pointers)
+    - [Examples](#examples)
+  - [Structs](#structs)
+  - [Macros](#macros)
+    - [Example](#example-1)
+  - [Conditional Compiling (Header Guards)](#conditional-compiling-header-guards)
+  - [`enums`](#enums)
+  - [`unions`](#unions)
+  - [Flush a Stream](#flush-a-stream)
+    - [`fflush`](#fflush)
+  - [Receiving Input from stdin](#receiving-input-from-stdin)
+    - [Input ffunctions](#input-ffunctions)
+  - [Typedef Deceleration](#typedef-deceleration)
+    - [Example](#example-2)
+  - [Reading from Files/Streams](#reading-from-filesstreams)
+  - [`switch` Statement](#switch-statement)
+  - [`scanf`](#scanf)
+  - [Freeing Memory](#freeing-memory)
+  - [Processes](#processes)
+    - [Macros](#macros-1)
+    - [Zombies](#zombies)
+  - [Makefiles](#makefiles)
+    - [Linker modularity](#linker-modularity)
+  - [Files](#files)
 - [UNIX Operations](#unix-operations)
   - [Redirection](#redirection)
     - [Example](#example-3)
@@ -133,6 +218,43 @@ Integer division will always truncate towards zero.
   - Copy bytes from a pointer to a pointer.
 
 Use [cdecl](https://cdecl.org) for easy conversion.
+
+### Function Pointers
+
+Declare a basic function.
+
+```C
+multiplyInt(int n, int m){
+  return n * m;
+}
+```
+
+Define a function pointer.
+
+```C
+int (*functionPtr)(int, int);
+```
+
+Point the pointer to the function.
+
+```C
+functionPtr = &multiplyInt;
+```
+
+Use the pointer:
+
+```C
+int product = (*functionPtr)(2,5) // 10
+```
+
+Passing the pointer to another function.
+
+```C
+int multiply2to5(int (*functionPtr)(int)(int)){
+  return (*functionPtr)(2,5)
+}
+```
+
 
 ### Examples
 
