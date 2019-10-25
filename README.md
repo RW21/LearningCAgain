@@ -10,6 +10,7 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Arrays](#arrays)
   - [Numerical Operators](#numerical-operators)
     - [Division](#division)
+    - [Floating Point Arithmetic](#floating-point-arithmetic)
   - [Pointers](#pointers)
     - [Pointer Related Functions](#pointer-related-functions)
     - [Function Pointers](#function-pointers)
@@ -97,6 +98,7 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Arrays](#arrays)
   - [Numerical Operators](#numerical-operators)
     - [Division](#division)
+    - [Floating Point Arithmetic](#floating-point-arithmetic)
   - [Pointers](#pointers)
     - [Pointer Related Functions](#pointer-related-functions)
     - [Function Pointers](#function-pointers)
@@ -207,6 +209,20 @@ int b[] = {10, 20, 40};
 ### Division
 
 Integer division will always truncate towards zero.
+
+### Floating Point Arithmetic
+
+If an arithmetic contains an integer, an integer operation is performed.
+
+```C
+float num = 5 / 2; // num = 2
+```
+
+If an arithmetic contains one float, than the other integers will be converted to a float. 
+
+```C
+float num = 5.0 / 2; // num = 2.5
+```
 
 ## Pointers
 
