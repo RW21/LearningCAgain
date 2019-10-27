@@ -3,6 +3,7 @@
 Code snippets and cheat sheet for UNIX and C99.
 
 - [Learning C Language and the UNIX System](#learning-c-language-and-the-unix-system)
+- [- UNIX Operations](#unix-operations)
 - [C Language](#c-language)
   - [Types](#types)
   - [Bitwise Operators](#bitwise-operators)
@@ -21,6 +22,7 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Conditional Compiling (Header Guards)](#conditional-compiling-header-guards)
   - [`enums`](#enums)
   - [`unions`](#unions)
+  - [Signals](#signals)
   - [Flush a Stream](#flush-a-stream)
     - [`fflush`](#fflush)
   - [Receiving Input from stdin](#receiving-input-from-stdin)
@@ -38,6 +40,54 @@ Code snippets and cheat sheet for UNIX and C99.
     - [Linker modularity](#linker-modularity)
   - [Files](#files)
 - [UNIX Operations](#unix-operations)
+  - [Environment Variables](#environment-variables)
+  - [Referring to Files](#referring-to-files)
+  - [Redirection](#redirection)
+    - [Example](#example-3)
+  - [Regex](#regex)
+  - [`gcc`](#gcc)
+    - [Options](#options)
+  - [File Permissions](#file-permissions)
+    - [`chmod`](#chmod)
+      - [Examples](#examples-1)
+  - [`export`](#export)
+  - [`cut`](#cut)
+    - [Options](#options-1)
+    - [Example](#example-4)
+  - [`grep`](#grep)
+    - [Options](#options-2)
+    - [Examples](#examples-2)
+  - [`ls`](#ls)
+    - [Options](#options-3)
+  - [`ps`](#ps)
+    - [Options](#options-4)
+  - [`sort`](#sort)
+    - [Options](#options-5)
+  - [`uniq`](#uniq)
+    - [Options](#options-6)
+  - [Displaying Files in stdout](#displaying-files-in-stdout)
+    - [`cat`](#cat)
+    - [`head`](#head)
+    - [`tail`](#tail)
+    - [I Want a Specific Line](#i-want-a-specific-line)
+  - [`wc`](#wc)
+  - [`diff`](#diff)
+  - [`svn`](#svn)
+  - [`ln`](#ln)
+    - [Options](#options-7)
+  - [Deleting files/directories](#deleting-filesdirectories)
+    - [`rm`](#rm)
+      - [Options](#options-8)
+    - [`rmdir`](#rmdir)
+  - [File Transportation](#file-transportation)
+    - [`cp`](#cp)
+      - [Options](#options-9)
+    - [`mv`](#mv)
+  - [`less` and `more`](#less-and-more)
+    - [`less`](#less)
+    - [`more`](#more)
+  - [`kill`](#kill)
+    - [Example](#example-5)
 <<<<<<< HEAD
   - [Redirection](#redirection)
     - [Example](#example-3)
@@ -92,6 +142,7 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Files](#files)
 >>>>>>> d425610504dc1b6083c53e8c87cd5b50fe143876
 - [Learning C Language and the UNIX System](#learning-c-language-and-the-unix-system)
+- [- UNIX Operations](#unix-operations)
 - [C Language](#c-language)
   - [Types](#types)
   - [Bitwise Operators](#bitwise-operators)
@@ -110,6 +161,7 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Conditional Compiling (Header Guards)](#conditional-compiling-header-guards)
   - [`enums`](#enums)
   - [`unions`](#unions)
+  - [Signals](#signals)
   - [Flush a Stream](#flush-a-stream)
     - [`fflush`](#fflush)
   - [Receiving Input from stdin](#receiving-input-from-stdin)
@@ -127,6 +179,54 @@ Code snippets and cheat sheet for UNIX and C99.
     - [Linker modularity](#linker-modularity)
   - [Files](#files)
 - [UNIX Operations](#unix-operations)
+  - [Environment Variables](#environment-variables)
+  - [Referring to Files](#referring-to-files)
+  - [Redirection](#redirection)
+    - [Example](#example-3)
+  - [Regex](#regex)
+  - [`gcc`](#gcc)
+    - [Options](#options)
+  - [File Permissions](#file-permissions)
+    - [`chmod`](#chmod)
+      - [Examples](#examples-1)
+  - [`export`](#export)
+  - [`cut`](#cut)
+    - [Options](#options-1)
+    - [Example](#example-4)
+  - [`grep`](#grep)
+    - [Options](#options-2)
+    - [Examples](#examples-2)
+  - [`ls`](#ls)
+    - [Options](#options-3)
+  - [`ps`](#ps)
+    - [Options](#options-4)
+  - [`sort`](#sort)
+    - [Options](#options-5)
+  - [`uniq`](#uniq)
+    - [Options](#options-6)
+  - [Displaying Files in stdout](#displaying-files-in-stdout)
+    - [`cat`](#cat)
+    - [`head`](#head)
+    - [`tail`](#tail)
+    - [I Want a Specific Line](#i-want-a-specific-line)
+  - [`wc`](#wc)
+  - [`diff`](#diff)
+  - [`svn`](#svn)
+  - [`ln`](#ln)
+    - [Options](#options-7)
+  - [Deleting files/directories](#deleting-filesdirectories)
+    - [`rm`](#rm)
+      - [Options](#options-8)
+    - [`rmdir`](#rmdir)
+  - [File Transportation](#file-transportation)
+    - [`cp`](#cp)
+      - [Options](#options-9)
+    - [`mv`](#mv)
+  - [`less` and `more`](#less-and-more)
+    - [`less`](#less)
+    - [`more`](#more)
+  - [`kill`](#kill)
+    - [Example](#example-5)
 =======
   - [Environment Variables](#environment-variables)
   - [Referring to Files](#referring-to-files)
@@ -350,6 +450,22 @@ union Staff{
 };
 ```
 
+## Signals
+
+6 standard signals are:
+
+- `SIGABRT`
+  - "abort", abnormal termination
+- `SIGFPE`
+  - floating point exception
+- `SIGILL`
+  - illegal, invalid instruction
+- `SIGINT`
+  - interrupt signal
+- `SIGSEV`
+  - segmentation violation, invalid memory access
+- `SIGTERM`
+  - terminate request
 
 ## Flush a Stream
 
