@@ -38,6 +38,7 @@ Code snippets and cheat sheet for UNIX and C99.
     - [Linker modularity](#linker-modularity)
   - [Files](#files)
 - [UNIX Operations](#unix-operations)
+<<<<<<< HEAD
   - [Redirection](#redirection)
     - [Example](#example-3)
   - [Regex](#regex)
@@ -126,6 +127,10 @@ Code snippets and cheat sheet for UNIX and C99.
     - [Linker modularity](#linker-modularity)
   - [Files](#files)
 - [UNIX Operations](#unix-operations)
+=======
+  - [Environment Variables](#environment-variables)
+  - [Referring to Files](#referring-to-files)
+>>>>>>> d7f417cd6d1aeb98cb6b0eb125a6173252e29651
   - [Redirection](#redirection)
     - [Example](#example-3)
   - [Regex](#regex)
@@ -181,8 +186,10 @@ Code snippets and cheat sheet for UNIX and C99.
   - char ≤ short int ≤ int ≤ long int ≤ long long int
 - Unsigned integer types
   -  unsigned char ≤ unsigned short int ≤ unsigned int ≤ unsigned long int ≤ unsigned long long int
--  floating point types
+-  floating point types 
    -  float ≤ double ≤ long double
+
+Unsigned does not store negative values.
 
 ## Bitwise Operators
 
@@ -375,6 +382,13 @@ Typedef on structs are possible.
 typedef char* cptr;
 
 cptr x, y, z;
+
+typedef struct {
+  int a;
+  int b;
+} blob;
+
+blob b;
 ```
 
 ## Reading from Files/Streams
@@ -424,6 +438,22 @@ FILE *p = fopen("filename", "anymode");
 
 # UNIX Operations
 
+## Environment Variables
+
+`env` to list all environment variables.
+
+Can be accessed by `$var_name`.
+
+- PATH
+  - Tells the shell where to look when a particular program is requested.
+
+## Referring to Files
+
+- `.` refer to files in current directory.
+  - `./a.out`
+- `~` refers to `$HOME` variable. 
+  - `~/downloads/a.out`
+
 ## Redirection
 
 To redirect stdin use `>`. 
@@ -444,6 +474,8 @@ Some basic regex.
 - `?`
   - Matches zero or one occurrences of the regex.
   - e.g. To get items which start from the start with the character s and end with d excluding the character sd, `s*?d`. 
+- `^`
+  - Match expression at the start of the line.
 
 ## `gcc`
 
@@ -541,7 +573,7 @@ Lists files. Can do ls regex expression.
 - `-a`
   - Include entries with `.` in front. Show hidden files.
 - `-d`
-  - Entries listed as plain files. 
+  - Include directories as just itself.
 - `-i` 
   - For each file print the serial number.
 
