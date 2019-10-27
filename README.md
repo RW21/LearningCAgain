@@ -37,93 +37,8 @@ Code snippets and cheat sheet for UNIX and C99.
     - [Linker modularity](#linker-modularity)
   - [Files](#files)
 - [UNIX Operations](#unix-operations)
-  - [Redirection](#redirection)
-    - [Example](#example-3)
-  - [Regex](#regex)
-  - [`gcc`](#gcc)
-    - [Options](#options)
-  - [File Permissions](#file-permissions)
-    - [`chmod`](#chmod)
-      - [Examples](#examples-1)
-  - [`export`](#export)
-  - [`cut`](#cut)
-    - [Options](#options-1)
-    - [Example](#example-4)
-  - [`grep`](#grep)
-    - [Options](#options-2)
-    - [Examples](#examples-2)
-  - [`ls`](#ls)
-    - [Options](#options-3)
-  - [`ps`](#ps)
-    - [Options](#options-4)
-  - [`sort`](#sort)
-    - [Options](#options-5)
-  - [`uniq`](#uniq)
-    - [Options](#options-6)
-  - [Displaying Files in stdout](#displaying-files-in-stdout)
-    - [`cat`](#cat)
-    - [`head`](#head)
-    - [`tail`](#tail)
-    - [I Want a Specific Line](#i-want-a-specific-line)
-  - [`wc`](#wc)
-  - [`diff`](#diff)
-  - [`svn`](#svn)
-  - [`ln`](#ln)
-    - [Options](#options-7)
-  - [Deleting files/directories](#deleting-filesdirectories)
-    - [`rm`](#rm)
-      - [Options](#options-8)
-    - [`rmdir`](#rmdir)
-  - [File Transportation](#file-transportation)
-    - [`cp`](#cp)
-      - [Options](#options-9)
-    - [`mv`](#mv)
-  - [`less` and `more`](#less-and-more)
-    - [`less`](#less)
-    - [`more`](#more)
-  - [`kill`](#kill)
-    - [Example](#example-5)
-<<<<<<< HEAD
-  - [Makefiles](#makefiles)
-    - [Linker modularity](#linker-modularity)
-=======
-  - [Files](#files)
->>>>>>> d425610504dc1b6083c53e8c87cd5b50fe143876
-- [Learning C Language and the UNIX System](#learning-c-language-and-the-unix-system)
-- [C Language](#c-language)
-  - [Types](#types)
-  - [Bitwise Operators](#bitwise-operators)
-    - [Example](#example)
-  - [Arrays](#arrays)
-  - [Numerical Operators](#numerical-operators)
-    - [Division](#division)
-  - [Pointers](#pointers)
-    - [Pointer Related Functions](#pointer-related-functions)
-    - [Function Pointers](#function-pointers)
-    - [Examples](#examples)
-  - [Structs](#structs)
-  - [Macros](#macros)
-    - [Example](#example-1)
-  - [Conditional Compiling (Header Guards)](#conditional-compiling-header-guards)
-  - [`enums`](#enums)
-  - [`unions`](#unions)
-  - [Flush a Stream](#flush-a-stream)
-    - [`fflush`](#fflush)
-  - [Receiving Input from stdin](#receiving-input-from-stdin)
-    - [Input ffunctions](#input-ffunctions)
-  - [Typedef Deceleration](#typedef-deceleration)
-    - [Example](#example-2)
-  - [Reading from Files/Streams](#reading-from-filesstreams)
-  - [`switch` Statement](#switch-statement)
-  - [`scanf`](#scanf)
-  - [Freeing Memory](#freeing-memory)
-  - [Processes](#processes)
-    - [Macros](#macros-1)
-    - [Zombies](#zombies)
-  - [Makefiles](#makefiles)
-    - [Linker modularity](#linker-modularity)
-  - [Files](#files)
-- [UNIX Operations](#unix-operations)
+  - [Environment Variables](#environment-variables)
+  - [Referring to Files](#referring-to-files)
   - [Redirection](#redirection)
     - [Example](#example-3)
   - [Regex](#regex)
@@ -407,6 +322,22 @@ FILE *p = fopen("filename", "anymode");
 ```
 
 # UNIX Operations
+
+## Environment Variables
+
+`env` to list all environment variables.
+
+Can be accessed by `$var_name`.
+
+- PATH
+  - Tells the shell where to look when a particular program is requested.
+
+## Referring to Files
+
+- `.` refer to files in current directory.
+  - `./a.out`
+- `~` refers to `$HOME` variable. 
+  - `~/downloads/a.out`
 
 ## Redirection
 
