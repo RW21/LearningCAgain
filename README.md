@@ -94,8 +94,10 @@ Code snippets and cheat sheet for UNIX and C99.
   - char ≤ short int ≤ int ≤ long int ≤ long long int
 - Unsigned integer types
   -  unsigned char ≤ unsigned short int ≤ unsigned int ≤ unsigned long int ≤ unsigned long long int
--  floating point types
+-  floating point types 
    -  float ≤ double ≤ long double
+
+Unsigned does not store negative values.
 
 ## Bitwise Operators
 
@@ -274,6 +276,13 @@ Typedef on structs are possible.
 typedef char* cptr;
 
 cptr x, y, z;
+
+typedef struct {
+  int a;
+  int b;
+} blob;
+
+blob b;
 ```
 
 ## Reading from Files/Streams
@@ -359,6 +368,8 @@ Some basic regex.
 - `?`
   - Matches zero or one occurrences of the regex.
   - e.g. To get items which start from the start with the character s and end with d excluding the character sd, `s*?d`. 
+- `^`
+  - Match expression at the start of the line.
 
 ## `gcc`
 
@@ -456,7 +467,7 @@ Lists files. Can do ls regex expression.
 - `-a`
   - Include entries with `.` in front. Show hidden files.
 - `-d`
-  - Entries listed as plain files. 
+  - Include directories as just itself.
 - `-i` 
   - For each file print the serial number.
 
