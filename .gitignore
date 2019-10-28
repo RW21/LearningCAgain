@@ -2,3 +2,6 @@
 *.vscode
 *.pdf
 test.c
+.idea
+.vscode
+cmake*
