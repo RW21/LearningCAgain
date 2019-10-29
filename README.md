@@ -3,7 +3,6 @@
 Code snippets and cheat sheet for UNIX and C99.
 
 - [Learning C Language and the UNIX System](#learning-c-language-and-the-unix-system)
-- [- UNIX Operations](#unix-operations)
 - [C Language](#c-language)
   - [Types](#types)
   - [Bitwise Operators](#bitwise-operators)
@@ -142,7 +141,6 @@ Code snippets and cheat sheet for UNIX and C99.
   - [Files](#files)
 >>>>>>> d425610504dc1b6083c53e8c87cd5b50fe143876
 - [Learning C Language and the UNIX System](#learning-c-language-and-the-unix-system)
-- [- UNIX Operations](#unix-operations)
 - [C Language](#c-language)
   - [Types](#types)
   - [Bitwise Operators](#bitwise-operators)
@@ -572,7 +570,7 @@ Can be accessed by `$var_name`.
 
 ## Redirection
 
-To redirect stdin use `>`. 
+To redirect stdin use `>`. `>` will overwrite a file. `>>` will append to a file.
 
 When using the character '>' inside a string in Bash, make sure to escape it. e.g. `grep "bracket \>" main.c`
 
@@ -581,6 +579,7 @@ When using the character '>' inside a string in Bash, make sure to escape it. e.
 ```bash
 ls /etc > listoffiles
 cat listoffiles
+echo $USER >> userfile
 ```
 
 ## Regex
